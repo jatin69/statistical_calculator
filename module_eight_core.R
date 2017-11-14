@@ -145,18 +145,17 @@ my_mann_whitney_test<-function(data1,data2,alpha,flag) {
   return(c(calculated,qvalue))
 }
 
+## =========================== Krushkal Wallis Test ======================================
 
-
-## =========================== error :Krushkal Test ======================================
-
-# === =error -=====
-# data1<-c(94,88,91,74,87,97)
-# data2<-c(85,82,79,84,61,72,80)
-# data3<-c(89,67,72,76,69)
-# alpha<-0.05
-#kruskal_wallis(data1,data2,data3,0.05)
-
-kruskal_wallis<-function(data1,data2,data3,alpha) {
+my_kruskal_wallis<-function(data1,data2,data3,alpha) {
+  
+  # test case
+  # data1<-c(94,88,91,74,87,97)
+  # data2<-c(85,82,79,84,61,72,80)
+  # data3<-c(89,67,72,76,69)
+  # alpha<-0.05
+  
+  
   temp<-c(data1,data2,data3)
   temp<-sort(temp) #sort temp
   n1<-length(data1) #length of 1st data
@@ -168,23 +167,21 @@ kruskal_wallis<-function(data1,data2,data3,alpha) {
   R3<-0
   for(i in 1:n) {
     for(j in 1:n) {
-      if(j<=n1 && temp[i]==data1[j] ) {
+      if(temp[i]==data1[j] && j<=n1 && i<=(n1+n2+n3)) {
         R1<-R1+i #calculating R1
       }
-      if(j<=n2 && temp[i]==data2[j]) {
+      if(temp[i]==data2[j] && j<=n2 && i<=(n1+n2+n3)) {
         R2<-R2+i #calculating R2
       }
-      if(j<=n3 && temp[i]==data3[j] ) {
+      if(temp[i]==data3[j] && j<=n3 && i<=(n1+n2+n3)) {
         R3<-R3+i #calculating R3
       }
     }
   }
-
+  
   H<-(12/(n*(n+1)))*( (R1**2)/n1  +  (R2**2)/n2   + (R3**2)/n3 )     - 3*(n+1) #calculating H value
   qvalue<-qchisq(1-alpha,2)						#calculating qvalue
-  if(qvalue <= H) {
-    return("Reject Null Hypothesis")
-  }
-  return("Don't Reject Null Hypothesis")
+  return(c(qvalue,H))
+
 }
 
