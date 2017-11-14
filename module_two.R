@@ -17,7 +17,8 @@ module_two_list<-c( "Correlation",
 my_cor_input<-function(){
   tagList(
     textInput('my_cor_input_dataOne', 'Enter a vector (comma delimited)', "8,9,7,6,13,7,11,12"),
-    textInput('my_cor_input_dataTwo', 'Enter a vector (comma delimited)', "35,49,27,33,60,21,45,51")
+    textInput('my_cor_input_dataTwo', 'Enter a vector (comma delimited)', "35,49,27,33,60,21,45,51"),
+    textInput('my_cor_input_dataThree', 'Enter level of significance (alpha) for significance test ', "0.05")
   )
 }
 
@@ -29,6 +30,7 @@ my_cor_output<-function(){
       # Preparing data
       x <- as.numeric(unlist(strsplit(input$my_cor_input_dataOne,",")))
       y <- as.numeric(unlist(strsplit(input$my_cor_input_dataTwo,",")))
+      myalpha<-as.numeric(unlist(strsplit(input$my_cor_input_dataThree,",")))
       
       #my_data<-sort(my_data)
       # Nicely Display the source data
@@ -51,9 +53,30 @@ my_cor_output<-function(){
         cat(head(y,4),"...",tail(y,4))
       }
       
-      result<-my_cor(x,y)
-      # Print the result
-      cat(sprintf("\n\nCorrelation : \n%s",result))
+      cor_result<-my_cor(x,y)
+      if(cor_result=="Error : X and Y must be of same length."){
+        cat(sprintf("\n\nCorrelation :\n%s",cor_result))
+      }
+      else{
+        cat(sprintf("\n\nCorrelation : %.6f",cor_result)) 
+        cat(sprintf("\n\nSignificance Test - "))
+        cat(sprintf("\n\nNULL Hypothesis : \nCorrelation between two datasets is \nstatistically significant.\n"))
+        result<-my_cor_significance_test(cor_result,length(x),myalpha)
+        if( result[1] <= result[2] ) {
+          cat(sprintf("\nCalculated value is less than equal to \ntabulated value"))
+          cat(sprintf("\n%s <= %s",result[1],result[2]))
+          cat(sprintf("\n\nReject NULL Hypothesis"))
+          cat(sprintf("\n\nCorrelation Between two these datasets is \nstatistically NOT significant."))
+        }
+        else{
+          cat(sprintf("\nCalculated value is greater than tabulated value"))
+          cat(sprintf("\n%s > %s",result[1],result[2]))
+          cat(sprintf("\n\nDo not Reject NULL Hypothesis"))
+          cat(sprintf("\n\nCorrelation Between two these datasets is \nstatistically significant."))
+        }
+      }
+      
+            
       
     })
   )

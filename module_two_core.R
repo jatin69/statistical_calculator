@@ -19,12 +19,29 @@ my_cor<-function(x,y) {
     r<-( n * sum(x*y) - sum(x) *sum(y) ) * r
     
     # 6 digit precision
-    result <- formatC(r,digits = 6,format = "f")
+    result <- as.numeric(formatC(r,digits = 6,format = "f"))
     return(result)
   }
   else{
     return("Error : X and Y must be of same length.")
   }
+}
+
+
+#null hypothesis r=0
+#alternative hypothesis r!=0
+my_cor_significance_test<-function(r,n,alpha){
+  
+  # r is correlation
+  # lenght of dataset
+  # alpha : level of significance
+  
+  t<-r/sqrt((1-r**2)/(length(x)-2))
+  if(t<0) {
+    t<-abs(t)
+  }
+  critical_value<-qt(1-alpha/2,length(x)-2)
+  return(c(critical_value,t))
 }
 
 
@@ -50,7 +67,4 @@ my_multi_linear_regression<-function(x1 , x2 , y ) {
   else{
     return("Error : X1 and X2 must be of same length.")
   }
-  
-  
-
-  }
+}
