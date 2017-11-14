@@ -1,5 +1,5 @@
 #' @author : Jatin Rohilla
-#' @tool   : R studio v1.0
+#' @tool   : R studio v1.0.153
 #' 
 #' @ Statistical Calculator
 #' @title : server.R
@@ -8,8 +8,6 @@
 library(shiny)
 
 source("module_includes.R")
-
-
 
 # Server Logic
 
@@ -51,9 +49,9 @@ server <- function(input, output) {
         "Continuous Distribution Functions"=module_five_list,
         "Sample Distribution Test Statistic"=module_six_list,
         "Interval Estimation"=module_seven_list,
-        "Non-Parametric Analysis"=module_eight_list
+        "Non-Parametric Analysis"=module_eight_list,
+        "Visualizations"=module_nine_list
         
-        # similarly add all 9 modules and corresponding sub_modules
     )
     
     # ask for sub_module input
@@ -124,7 +122,6 @@ server <- function(input, output) {
       #module 7
       "Estimation of Means | Variance known"=my_est_mean_var_known_input,
       "Estimation of Means | Variance Unknown"=my_est_mean_var_unknown_input,
-      
       "Estimation of Differences in Means | Variance Known"=my_est_diff_mean_var_known_input,
       "Estimation of Differences in Means | Variance Unknown"=my_est_diff_mean_var_unknown_input,
       "Estimation of Proportions"=my_est_prop_input,
@@ -136,9 +133,20 @@ server <- function(input, output) {
       # module 8
       "Sign Test"=my_sign_test_input,
       "Wilcoxon Signed-Rank test"=my_signed_rank_test_input,
-      "Mann-Whitney Test"=my_mann_whitney_test_input
+      "Mann-Whitney Test"=my_mann_whitney_test_input,
+      "Kruskal-Wallis Test"=my_kruskal_wallis_input,
       
-      # similarly add all all utilities from all 9 modules
+      # module 9
+      "Histograms"=my_hist_input,
+      "Bar Graph"=my_barplot_input,
+      "Line Graph"=my_linegraph_input,
+      "Pie Chart"=my_pie_input,
+      "Scatter plot"=my_scatter_input,
+      "Box-plot"=my_boxplot_input,
+      "q-q plot"=my_qplot_input,
+      "Stem-leaf plot"=my_stem_input,
+      "Pareto Chart"=my_pareto_chart_input
+      
     )
     
     # Takes all the required inouts
@@ -217,9 +225,21 @@ server <- function(input, output) {
       # module 8
       "Sign Test"=my_sign_test_output,
       "Wilcoxon Signed-Rank test"=my_signed_rank_test_output,
-      "Mann-Whitney Test"=my_mann_whitney_test_output
+      "Mann-Whitney Test"=my_mann_whitney_test_output,
+      "Kruskal-Wallis Test"=my_kruskal_wallis_output,
       
-      # similarly add all all utilities from all 9 modules
+      
+      # module 9
+      "Histograms"=my_hist_output,
+      "Bar Graph"=my_barplot_output,
+      "Line Graph"=my_linegraph_output,
+      "Pie Chart"=my_pie_output,
+      "Scatter plot"=my_scatter_output,
+      "Box-plot"=my_boxplot_output,
+      "q-q plot"=my_qplot_output,
+      "Stem-leaf plot"=my_stem_output,
+      "Pareto Chart"=my_pareto_chart_output
+      
     )
     
     sub_module_outputs()
