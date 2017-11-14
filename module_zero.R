@@ -10,7 +10,7 @@ module_list<-c(
   "Continuous Distribution Functions",    # Module 5
   
   "Sample Distribution Test Statistic",   # Module 6
-  "Interval Estimation ",                 # Module 7
+  "Interval Estimation",                 # Module 7
   
   "Non-Parametric Analysis",    # Module 8
   "Visualizations"              # Module 9
@@ -74,6 +74,7 @@ my_info_output<-function(){
 # 
 # 3. go to module_<no>.R and generate appropriate input/ouput.
 # Be careful, this is a high priority task
+# All required inputs to be name as - my_mean_input_dataOne
 # 
 # 4. go to server.R and make input/output entry of that utility in server logic.
 # 5. Test on app
@@ -86,10 +87,14 @@ my_info_output<-function(){
 # - mean
 # - median
 # - Mode
+# - Range-Min-Max
 
 # =========== CORE ============
 
 # Module 1
 # - mean
+# - mode
 # - median
-
+# - range
+# - min
+# - max
