@@ -6,6 +6,6 @@ Major modules and utilities working
 
 
 ### TODO
-	- [ ] clean up code
-	- [ ] remove extra files
-	- [ ] merge to master
+- [ ] clean up code
+- [X] remove extra files
+- [ ] merge to master
