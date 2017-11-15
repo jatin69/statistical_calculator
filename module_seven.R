@@ -86,6 +86,11 @@ my_est_mean_var_unknown_output<-function(){
       cat(sprintf("\nStandard Deviation    ( sigma ) : %s",my_sample_SD(data)))
       cat(sprintf("\nlevel of significance ( alpha ) : %s",myalpha))
       
+      if(length(data)>30){
+        cat(sprintf("\n\nSample size > 30\nSo it is a Normal Distribution"))
+        cat(sprintf("\nCalling Estimation of mean | Known Variance"))
+      }
+      
       cat(sprintf("\n\nEstimation : \n"))
       
       interval<-my_est_mean_var_unknown(data,myalpha) 
@@ -146,7 +151,9 @@ my_est_diff_mean_var_known_output<-function(){
       cat(sprintf("\nAverage               (  x bar 2  ) : %s",avg2))
       cat(sprintf("\nPopulation Variance   ( sigmasq 2 ) : %s",var2))
       cat(sprintf("\n\nlevel of significance (    alpha  ) : %s",myalpha))
+      
       cat(sprintf("\n\nEstimation : \n"))
+      
       
       interval<-my_est_diff_mean_var_known(avg1,avg2,var1,var2,n1,n2,myalpha) 
       cat(sprintf("\nMu lies in the interval :\n%s\nto\n%s",interval[1],interval[2]))
@@ -190,6 +197,13 @@ my_est_diff_mean_var_unknown_output<-function(){
       
       
       cat(sprintf("\n\nlevel of significance ( alpha ) : %s",myalpha))
+      
+      
+      if(length(data1)>30 && length(data2)>30){
+        cat(sprintf("\n\nBoth Sample sizes > 30\nSo it is a Normal Distribution"))
+        cat(sprintf("\nCalling Estimation of Difference of mean | \nKnown Variance"))
+      }
+      
       
       cat(sprintf("\n\nEstimation : \n"))
       

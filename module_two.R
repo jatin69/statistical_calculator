@@ -60,19 +60,19 @@ my_cor_output<-function(){
       else{
         cat(sprintf("\n\nCorrelation : %.6f",cor_result)) 
         cat(sprintf("\n\nSignificance Test - "))
-        cat(sprintf("\n\nNULL Hypothesis : \nCorrelation between two datasets is \nstatistically significant.\n"))
+        cat(sprintf("\n\nNULL Hypothesis : \nCorrelation between two datasets is \nNOT statistically significant.\n"))
         result<-my_cor_significance_test(cor_result,length(x),myalpha)
         if( result[1] <= result[2] ) {
           cat(sprintf("\nCalculated value is less than equal to \ntabulated value"))
           cat(sprintf("\n%s <= %s",result[1],result[2]))
           cat(sprintf("\n\nReject NULL Hypothesis"))
-          cat(sprintf("\n\nCorrelation Between two these datasets is \nstatistically NOT significant."))
+          cat(sprintf("\n\nCorrelation Between these two datasets is \nstatistically significant."))
         }
         else{
           cat(sprintf("\nCalculated value is greater than tabulated value"))
           cat(sprintf("\n%s > %s",result[1],result[2]))
           cat(sprintf("\n\nDo not Reject NULL Hypothesis"))
-          cat(sprintf("\n\nCorrelation Between two these datasets is \nstatistically significant."))
+          cat(sprintf("\n\nCorrelation Between these two datasets is \nstatistically NOT significant."))
         }
       }
       

@@ -36,11 +36,11 @@ my_cor_significance_test<-function(r,n,alpha){
   # lenght of dataset
   # alpha : level of significance
   
-  t<-r/sqrt((1-r**2)/(length(x)-2))
+  t<-r/sqrt((1-r**2)/(n-2))
   if(t<0) {
     t<-abs(t)
   }
-  critical_value<-qt(1-alpha/2,length(x)-2)
+  critical_value<-qt(1-alpha/2,n-2)
   return(c(critical_value,t))
 }
 
