@@ -168,7 +168,7 @@ my_bayes_theorm_output<-function(){
         
         cat("\n\nP( Hypothesis | Ai ) :\n",Bn_given_An)
         
-        cat("\n\nFixed event :\n",k)
+        cat("\n\nFixed event (Hypothesis event) :\n",k)
         if(k==1){ cat("st") }
         else if(k==2){ cat("nd") }
         else if(k==3){ cat("rd") }

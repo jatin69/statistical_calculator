@@ -43,6 +43,15 @@ my_sign_test_output<-function(){
       cat(sprintf("\n\nTesting Hypothesis    (   Mu  ) : %s",meu))
       cat(sprintf("\nlevel of significance ( alpha ) : %s",myalpha))
       cat(sprintf("\n\nNULL Hypothesis : \nX bar is equal to Mu"))
+      
+      
+      if(length(data)>30 ){
+        cat(sprintf("\n\nSample size > 30\nSo it follows Normal Distribution"))
+      }
+      else if(length(data)<=30){
+        cat(sprintf("\n\nSample size <= 30\nSo it follows Binomial Distribution"))
+      }
+      
       cat(sprintf("\n\nTest Results : \n"))
       
       pvalue<- my_sign_test(data,meu,myalpha,flag)
@@ -68,7 +77,7 @@ my_signed_rank_test_input<-function(){
     textInput('my_signed_rank_test_input_dataOne', 'Enter Data', "1,2,3,4,5,6,7,8,9,10,11,12"),
     textInput('my_signed_rank_test_input_dataTwo', 'Enter Mean for hypothesis testing (Mu)', "2"),
     textInput('my_signed_rank_test_input_dataThree', 'Enter level of significance (alpha) ', "0.05"),
-    selectInput("my_signed_rank_test_input_dataFour", "Choose Tail :", c("Two Tailed" = 0 , "One Tailed" = 1))
+    selectInput("my_signed_rank_test_input_dataFour", "Choose H1 :", c("Mu1 != Mu2" = 0 , "Mu1 < Mu2" = 1, "Mu1 > Mu2" = 2))
     
   )
 }
@@ -115,7 +124,7 @@ my_mann_whitney_test_input<-function(){
     textInput('my_mann_whitney_test_input_dataOne', 'Enter Data set 1', "1,2,3,4,5,6,7,8,9,10,11,12"),
     textInput('my_mann_whitney_test_input_dataTwo', 'Enter Data set 2', "5,6,7,8,9,10,11,12,1,43,1,4"),
     textInput('my_mann_whitney_test_input_dataThree', 'Enter level of significance (alpha) ', "0.05"),
-    selectInput("my_mann_whitney_test_input_dataFour", "Choose Tail :", c("Two Tailed" = 0 , "One Tailed" = 1))
+    selectInput("my_mann_whitney_test_input_dataFour", "Choose H1 :", c("Mu1 != Mu2" = 0 , "Mu1 < Mu2" = 1, "Mu1 > Mu2" = 2))
     
   )
 }

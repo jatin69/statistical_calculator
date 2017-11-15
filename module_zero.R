@@ -50,7 +50,7 @@ my_info_output<-function(){
           h3("We are students at DUCS."),
           p("This is a statistical calculator."),
           br()
-          
+          #,includeMarkdown("readme.md")
       )
     }),
     
@@ -58,7 +58,6 @@ my_info_output<-function(){
       cat("Copyright 2017\n")
       cat("\nDeveloper     : Jatin Rohilla\nMathematician : Shoaib Rayeen
           ")
-      
     })
   )
   

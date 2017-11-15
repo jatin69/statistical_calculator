@@ -74,7 +74,7 @@ my_median_output<-function(){
       raw_data<- (input$my_median_input_dataOne)
       # Preparing data
       my_data <- as.numeric(unlist(strsplit(raw_data,",")))
-      
+      my_data<-sort(my_data)
       # Nicely Display the source data
       cat("For dataset :\n")
       if(length(my_data)<=10){

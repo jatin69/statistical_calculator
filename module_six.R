@@ -104,6 +104,13 @@ my_t_test_output<-function(){
       cat(sprintf("\n\nTesting Hypothesis    (   Mu  ) : %s",meu))
       cat(sprintf("\nlevel of significance ( alpha ) : %s",myalpha))
       cat(sprintf("\n\nNULL Hypothesis : \nX bar is equal to Mu"))
+      
+      
+      if(length(data)>30){
+        cat(sprintf("\n\nSample size > 30\nSo it is a Normal Distribution"))
+        cat(sprintf("\nCalling Z-test "))
+      }
+      
       cat(sprintf("\n\nTest Results : \n"))
       
       pvalue<- my_t_test(data,meu,myalpha,flag)
